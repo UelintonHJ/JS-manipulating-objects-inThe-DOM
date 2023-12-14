@@ -8,6 +8,9 @@ const buttons = document.querySelectorAll('.app__card-button');
 const startPauseBtn = document.querySelector('#start-pause');
 const musicFocusInput = document.querySelector('#alternar-musica');
 const music = new Audio('sons/luna-rise-part-one.mp3');
+const timeCompletionSound = new Audio('sons/beep.mp3');
+const playSound = new Audio('sons/play.wav');
+const pauseSound = new Audio('sons/pause.mp3');
 
 let elapsedTimeInSeconds = 5;
 let intervalId = null;
@@ -72,11 +75,12 @@ function changeContext(context) {
 const contdown = () => {
     if(elapsedTimeInSeconds <= 0) {
         reset();
+        timeCompletionSound.play();
         alert('Finished time');
         return
     }
         elapsedTimeInSeconds -= 1;
-        console.log('Timer ' + elapsedTimeInSeconds)
+        console.log('Timer ' + elapsedTimeInSeconds);
     }
     
 startPauseBtn.addEventListener('click', startOrPause);
@@ -84,9 +88,12 @@ startPauseBtn.addEventListener('click', startOrPause);
 function startOrPause() {
     if(intervalId) {
         reset();
+        pauseSound.play();
         return;
+    }else{
+        playSound.play();
+        intervalId = setInterval(contdown, 1000)
     }
-    intervalId = setInterval(contdown, 1000)
 }
 
 function reset() {
