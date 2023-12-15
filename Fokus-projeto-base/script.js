@@ -30,21 +30,25 @@ musicFocusInput.addEventListener('change', () => {
 })
 
 focusBtn.addEventListener('click', () => {
+    elapsedTimeInSeconds = 1500;
     changeContext('foco');
     focusBtn.classList.add('active')
 })
 
 shortBtn.addEventListener('click', () => {
+    elapsedTimeInSeconds = 300;
     changeContext('descanso-curto');
     shortBtn.classList.add('active')
 })
 
 longBtn.addEventListener('click', () => {
+    elapsedTimeInSeconds = 900;
     changeContext('descanso-longo');
     longBtn.classList.add('active')
 })
 
 function changeContext(context) {
+    showTime();
     buttons.forEach(function(context){
         context.classList.remove('active');
     })
@@ -78,7 +82,7 @@ function changeContext(context) {
 
 const contdown = () => {
     if(elapsedTimeInSeconds <= 0) {
-        // timeCompletionSound.play();
+        timeCompletionSound.play();
         alert('Finished time');
         reset();
         return
@@ -110,8 +114,9 @@ function reset() {
 }
 
 function showTime() {
-    const time = elapsedTimeInSeconds;
-    screenTime.innerHTML = `${time}`
+    const time = new Date(elapsedTimeInSeconds * 1000);
+    const formattedTime = time.toLocaleTimeString('pt-BR', {minute: '2-digit', second: '2-digit'})
+    screenTime.innerHTML = `${formattedTime}`
 }
 
 showTime();
