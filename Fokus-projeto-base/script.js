@@ -7,12 +7,16 @@ const titulo = document.querySelector('.app__title');
 const buttons = document.querySelectorAll('.app__card-button');
 const startPauseBtn = document.querySelector('#start-pause');
 const musicFocusInput = document.querySelector('#alternar-musica');
+const startOrPauseBtn = document.querySelector('#start-pause span')
+const imgPauseOrStart = document.querySelector('.app__card-primary-butto-icon');
+const screenTime = document.querySelector('#timer');
 const music = new Audio('sons/luna-rise-part-one.mp3');
 const timeCompletionSound = new Audio('sons/beep.mp3');
 const playSound = new Audio('sons/play.wav');
 const pauseSound = new Audio('sons/pause.mp3');
 
-let elapsedTimeInSeconds = 5;
+
+let elapsedTimeInSeconds = 1500;
 let intervalId = null;
 
 music.loop = true;
@@ -74,29 +78,40 @@ function changeContext(context) {
 
 const contdown = () => {
     if(elapsedTimeInSeconds <= 0) {
-        reset();
-        timeCompletionSound.play();
+        // timeCompletionSound.play();
         alert('Finished time');
+        reset();
         return
     }
         elapsedTimeInSeconds -= 1;
-        console.log('Timer ' + elapsedTimeInSeconds);
+        showTime();
     }
     
 startPauseBtn.addEventListener('click', startOrPause);
 
 function startOrPause() {
     if(intervalId) {
-        reset();
         pauseSound.play();
+        imgPauseOrStart.setAttribute('src', `imagens/play_arrow.png`);
+        reset();
         return;
     }else{
         playSound.play();
-        intervalId = setInterval(contdown, 1000)
+        intervalId = setInterval(contdown, 1000);
+        startOrPauseBtn.textContent = 'Pause';
+        imgPauseOrStart.setAttribute('src', `imagens/pause.png`);
     }
 }
 
 function reset() {
     clearInterval(intervalId);
+    startOrPauseBtn.textContent = 'Start';
     intervalId = null;
 }
+
+function showTime() {
+    const time = elapsedTimeInSeconds;
+    screenTime.innerHTML = `${time}`
+}
+
+showTime();
