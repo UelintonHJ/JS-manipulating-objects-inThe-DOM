@@ -16,5 +16,5 @@ addTaskForm.addEventListener('submit', (events) => {
         description: textArea.value
     }
     tasks.push(task)
-    localStorage.setItem('tasks', tasks)
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 })
