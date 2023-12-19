@@ -5,6 +5,10 @@ const ulTasks = document.querySelector('.app__section-task-list')
 
 const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 
+function updateTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
+}
+
 function createTaskElement(task) {
     const li = document.createElement('li')
     li.classList.add('app__section-task-list-item')
@@ -29,6 +33,8 @@ function createTaskElement(task) {
     button.onclick = () => {
         const newDescription = prompt("Which is the task?")
         paragraph.textContent = newDescription
+        task.description = newDescription
+        updateTasks()
     }
 
     const imgBtn = document.createElement('img')
@@ -54,7 +60,7 @@ addTaskForm.addEventListener('submit', (events) => {
     tasks.push(task)
     const taskElement = createTaskElement(task)
     ulTasks.append(taskElement)
-    localStorage.setItem('tasks', JSON.stringify(tasks))
+    updateTasks()
     textArea.value = ''
     addTaskForm.classList.add('hidden')
 })
