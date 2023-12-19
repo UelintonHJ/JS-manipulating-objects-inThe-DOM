@@ -31,10 +31,15 @@ function createTaskElement(task) {
     button.classList.add('app_button-edit')
 
     button.onclick = () => {
+        debugger
         const newDescription = prompt("Which is the task?")
-        paragraph.textContent = newDescription
-        task.description = newDescription
-        updateTasks()
+        console.log('New description of task: ', newDescription)
+        if (newDescription) {
+            paragraph.textContent = newDescription
+            task.description = newDescription
+            updateTasks()
+        }
+
     }
 
     const imgBtn = document.createElement('img')
@@ -66,6 +71,6 @@ addTaskForm.addEventListener('submit', (events) => {
 })
 
 tasks.forEach(task => {
-   const taskElement = createTaskElement(task)
-   ulTasks.append(taskElement)
+    const taskElement = createTaskElement(task)
+    ulTasks.append(taskElement)
 });
