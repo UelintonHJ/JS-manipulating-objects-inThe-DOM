@@ -26,6 +26,11 @@ function createTaskElement(task) {
     const button = document.createElement('button')
     button.classList.add('app_button-edit')
 
+    button.onclick = () => {
+        const newDescription = prompt("Which is the task?")
+        paragraph.textContent = newDescription
+    }
+
     const imgBtn = document.createElement('img')
     imgBtn.setAttribute('src', '/Fokus-projeto-base/imagens/edit.png')
     button.append(imgBtn)
