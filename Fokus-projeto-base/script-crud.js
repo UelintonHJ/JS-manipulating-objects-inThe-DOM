@@ -2,8 +2,14 @@ const addTaskBtn = document.querySelector('.app__button--add-task')
 const addTaskForm = document.querySelector('.app__form-add-task')
 const textArea = document.querySelector('.app__form-textarea')
 const ulTasks = document.querySelector('.app__section-task-list')
+const cancelBtn = document.querySelector('.app__form-footer__button--cancel')
+const taskParagraphDescription = document.querySelector('.app__section-active-task-description')
 
 const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+
+function closeForm() {
+    addTaskForm.classList.add('hidden')
+}
 
 function updateTasks() {
     localStorage.setItem('tasks', JSON.stringify(tasks))
@@ -31,9 +37,9 @@ function createTaskElement(task) {
     button.classList.add('app_button-edit')
 
     button.onclick = () => {
-        debugger
+        // debugger
         const newDescription = prompt("Which is the task?")
-        console.log('New description of task: ', newDescription)
+        // console.log('New description of task: ', newDescription)
         if (newDescription) {
             paragraph.textContent = newDescription
             task.description = newDescription
@@ -50,7 +56,17 @@ function createTaskElement(task) {
     li.append(paragraph)
     li.append(button)
 
+    li.onclick = () => {
+        li.classList.add('app__section-task-list-item-active')
+        taskParagraphDescription.textContent = task.description
+    }
+
     return li
+}
+
+const clearForm = () => {
+    textArea.value = ''
+    closeForm()
 }
 
 addTaskBtn.addEventListener('click', () => {
@@ -67,10 +83,13 @@ addTaskForm.addEventListener('submit', (events) => {
     ulTasks.append(taskElement)
     updateTasks()
     textArea.value = ''
-    addTaskForm.classList.add('hidden')
+    closeForm()
 })
+
+cancelBtn.addEventListener('click', clearForm)
 
 tasks.forEach(task => {
     const taskElement = createTaskElement(task)
     ulTasks.append(taskElement)
 });
+
