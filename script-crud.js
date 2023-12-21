@@ -7,6 +7,7 @@ const taskParagraphDescription = document.querySelector('.app__section-active-ta
 
 const tasks = JSON.parse(localStorage.getItem('tasks')) || []
 let selectedTask = null
+let liSelectedTask = null
 
 function closeForm() {
         addTaskForm.classList.add('hidden')
@@ -63,9 +64,11 @@ function createTaskElement(task) {
         if (selectedTask == task) {
             taskParagraphDescription.textContent = ''
             selectedTask = null
+            liSelectedTask = null
             return
         }
         selectedTask = task
+        liSelectedTask = li
         taskParagraphDescription.textContent = task.description
         
         li.classList.add('app__section-task-list-item-active')
@@ -103,21 +106,10 @@ tasks.forEach(task => {
     ulTasks.append(taskElement)
 });
 
-
-
-
-
-// const cancelBtn = document.querySelector('.app__form-footer__button--cancel')
-
-// function closeForm() {
-//     addTaskForm.classList.add('hidden')
-// }
-
-// const clearForm = () => {
-//     textArea.value = ''
-//     closeForm()
-// }
-
-// closeForm()
-
-// cancelBtn.addEventListener('click', clearForm)
+document.addEventListener('FocusFinished', () => {
+    if (selectedTask && liSelectedTask) {
+        liSelectedTask.classList.remove('app__section-task-list-item-active')
+        liSelectedTask.classList.add('app__section-task-list-item-complete')
+        liSelectedTask.querySelector('button').setAttribute('disabled', 'disabled')
+    }
+})
