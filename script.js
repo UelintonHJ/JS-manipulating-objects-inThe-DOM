@@ -83,7 +83,12 @@ function changeContext(context) {
 const contdown = () => {
     if(elapsedTimeInSeconds <= 0) {
         timeCompletionSound.play();
-        alert('Finished time');
+        alert('Finished time!');
+        const activeFocus = html.getAttribute('data-contexto') == 'foco'
+        if (activeFocus) {
+            const event = new CustomEvent('FocusFinished')
+            document.dispatchEvent(event)
+        }
         reset();
         return
     }
