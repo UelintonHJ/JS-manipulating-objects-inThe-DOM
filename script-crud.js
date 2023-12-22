@@ -4,8 +4,9 @@ const textArea = document.querySelector('.app__form-textarea')
 const ulTasks = document.querySelector('.app__section-task-list')
 const cancelBtn = document.querySelector('.app__form-footer__button--cancel')
 const taskParagraphDescription = document.querySelector('.app__section-active-task-description')
+const removeCompletedBtn = document.querySelector('#btn-remover-concluidas')
 
-const tasks = JSON.parse(localStorage.getItem('tasks')) || []
+let tasks = JSON.parse(localStorage.getItem('tasks')) || []
 let selectedTask = null
 let liSelectedTask = null
 
@@ -120,3 +121,12 @@ document.addEventListener('FocusFinished', () => {
         updateTasks()
     }
 })
+
+removeCompletedBtn.onclick = () => {
+    const selector = ".app__section-task-list-item-complete"
+    document.querySelectorAll(selector).forEach(element => {
+        element.remove()    
+    })
+    tasks = tasks.filter(task => !task.complete)
+    updateTasks()
+}
