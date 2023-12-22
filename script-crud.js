@@ -5,6 +5,7 @@ const ulTasks = document.querySelector('.app__section-task-list')
 const cancelBtn = document.querySelector('.app__form-footer__button--cancel')
 const taskParagraphDescription = document.querySelector('.app__section-active-task-description')
 const removeCompletedBtn = document.querySelector('#btn-remover-concluidas')
+const removeAllBtn = document.querySelector('#btn-remover-todas')
 
 let tasks = JSON.parse(localStorage.getItem('tasks')) || []
 let selectedTask = null
@@ -122,11 +123,18 @@ document.addEventListener('FocusFinished', () => {
     }
 })
 
-removeCompletedBtn.onclick = () => {
-    const selector = ".app__section-task-list-item-complete"
+const removeTasks = (onlyComplete) => {
+    // const selector = onlyComplete ? ".app__section-task-list-item-complete" : ".app__section-task-list-item"
+    let selector = ".app__section-task-list-item"
+    if (onlyComplete) {
+        selector = ".app__section-task-list-item-complete"
+    }
     document.querySelectorAll(selector).forEach(element => {
         element.remove()    
     })
-    tasks = tasks.filter(task => !task.complete)
+    tasks = onlyComplete ? tasks.filter(task => !task.complete) : []
     updateTasks()
 }
+
+removeCompletedBtn.onclick = () => removeTasks(true)
+removeAllBtn.onclick = () => removeTasks(false)
