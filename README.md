@@ -18,7 +18,7 @@ Trata-se de um **timer Pomodoro interativo**, que permite ao usuário alternar e
 
 ## 📽️ Preview
 
-![Fokus em ação](
+![Fokus em ação](imagens/Fokus-gif.gif)
 
 ## 🛠 Funcionalidades
 
@@ -49,7 +49,4 @@ git clone https://github.com/UelintonHJ/JS-manipulating-objects-inThe-DOM
 
 2. Abra o arquivo index.html em um navegador moderno (Chrome, Edge, Firefox).
 > Não é necessário instalar dependências, pois o projeto é puro front-end.
-
----
-
 
