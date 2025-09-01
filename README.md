@@ -20,6 +20,8 @@ Trata-se de um **timer Pomodoro interativo**, que permite ao usuário alternar e
 
 ![Fokus em ação](imagens/Fokus-gif.gif)
 
+---
+
 ## 🛠 Funcionalidades
 
 - Seleção de **Foco**, **Descanso curto** ou **Descanso longo**
