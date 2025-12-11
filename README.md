@@ -1,18 +1,20 @@
-# [Fokus](https://js-manipulating-objects-in-the-dom.vercel.app/) - Pomodoro Interativo
+# [Fokus - Pomodoro Interativo](https://js-manipulating-objects-in-the-dom.vercel.app/) 
 
 ![Fokus](imagens/logo.png)
 
-## 🎯 Sobre o projeto
+---
 
-O **Fokus** é um projeto acadêmico desenvolvido durante o curso da [Alura](https://www.alura.com.br/) sobre **manipulação de objetos no DOM**.
+## 🎯 Sobre o Projeto
 
-Trata-se de um **timer Pomodoro interativo**, que permite ao usuário alternar entre períodos de **foco**, **descanso curto** e **descanso longo**. Além disso, oferece:
+O **Fokus** é um timer Pomodoro interativo desenvolvido durante o curso da **Alura**, com foco em **manipulação de objetos no DOM** e lógica em JavaScript.
 
-- **Timer com contagem regressiva**
-- **Botão de iniciar/pausar** com troca de ícones
-- **Alarme sonoro** ao término do tempo
-- **Música de fundo** opcional, que pode ser ativada ou desativada pelo usuário
-- **Alteração de banner e cores** de acordo com o contexto
+O usuário pode alternar entre três modos:
+
+- **Foco**
+- **Descanso Curto**
+- **Descanso Longo**
+
+O site adapta **cores**, **textos**, **banner** e **áudio** de acordo com o contexto escolhido, criando uma experiência completa de produtividade. 
 
 ---
 
@@ -22,33 +24,36 @@ Trata-se de um **timer Pomodoro interativo**, que permite ao usuário alternar e
 
 ---
 
-## 🛠 Funcionalidades
+## 🔧 Funcionalidades
 
-- Seleção de **Foco**, **Descanso curto** ou **Descanso longo**
-- **Contagem regressiva** visual no card central
-- **Botão Start/Pause** com ícones dinâmicos
-- **Música de fundo** (luna-rise-part-one.mp3) controlável pelo toggle
-- **Alarme sonoro** (beep.mp3) ao finalizar o tempo
-- **Banner e cores do site** que se adaptam ao contexto escolhido
-- **Responsivo** para tablets e celulares
-
----
-
-## ⚡ Tecnologias
-
-- HTML5
-- CSS3 (Flexbox, Grid, variáveis CSS)
-- JavaScript (DOM, eventos, Audio API)
+- ⏱️ Timer com **contagem regressiva**
+- ▶️ **Start/Pause** com ícones dinâmicos
+- 🔔 **Alarme sonoro** ao fim do ciclo
+- 🎵 **Música de fundo opcional** (ativar/desativar)
+- 🎨 **Alteração automática de tema** (cores e banner conforme foco/descanso)
+- 📱 Layout **responsivo**
+- 👍 Projeto **100% frontend**, sem dependências externas
 
 ---
 
-## 🖥️ Como executar
+## 🛠 Tecnologias Utilizadas
 
-1. Clone o repositório:
-```bash
-git clone https://github.com/UelintonHJ/JS-manipulating-objects-inThe-DOM
+- **HTML5**
+- **CSS3** (Flexbox, Grid, variáveis CSS)
+- **JavaScript** (DOM, eventos, Audio API)
+
+---
+
+## 💻 Como rodar localmente
+
 ```
+# Clone o repositório:
+git clone https://github.com/UelintonHJ/JS-manipulating-objects-inThe-DOM
 
-2. Abra o arquivo index.html em um navegador moderno (Chrome, Edge, Firefox).
-> Não é necessário instalar dependências, pois o projeto é puro front-end.
+# Entre na pasta do projeto
+cd JS-manipulating-objects-inThe-DOM
+
+# Abra o index.html no navegador
+```
+> ✔️ Não é necessário instalar nada - o projeto é totalmente estático.
 
